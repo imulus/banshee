@@ -14,34 +14,27 @@ function makeFilenames(/* name1,name2,.. */) {
   });
 }
 
-
 describe("Bundle", function() {
-  describe("add", function() {
-
+  describe("#add()", function() {
     it("finds file dependencies", function() {
-      return true;
-      var input = "test/assets/bundle/javascript/script1.js";
-      var bundle = new Bundle;
-      bundle.add(input);
-
       var filenames = makeFilenames('nested/deeply/script4.js',
-                                     'nested/script3.js',
-                                     'script2.js',
-                                     'script1.js');
-
+                                    'nested/script3.js',
+                                    'script2.js',
+                                    'script1.js');
+      var bundle = new Bundle;
+      bundle.add("test/assets/bundle/javascript/script1.js");
       bundle.filenames().should.eql(filenames);
     });
 
 
     it("finds directory dependencies", function() {
-      var bundle = new Bundle;
-      bundle.add('test/assets/bundle/javascript/lib');
-
       var filenames = makeFilenames('lib/things/script4.js',
                                     'lib/stuff/script2.js',
                                     'lib/stuff/nested/script3.js',
                                     'lib/script1.js');
 
+      var bundle = new Bundle;
+      bundle.add('test/assets/bundle/javascript/lib');
       bundle.filenames().should.eql(filenames);
     });
 
@@ -61,6 +54,44 @@ describe("Bundle", function() {
       bundle.filenames().should.eql(makeFilenames('script.coffee', 'script.js'));
     });
 
+    it("only adds dependencies once", function(){
+      var file = makeFilenames('add_only_once.js')[0];
+      var bundle = new Bundle;
+      bundle.add(file);
+      bundle.add(file);
+      bundle.add(file);
+      bundle.filenames().should.eql([file]);
+    });
+
+    it("throws an error when a dependency doesn't exit", function(){
+      var file = makeFilenames('file_does_not_exist.js')[0];
+      if (fs.existsSync(file))
+        fs.unlinkSync(file);
+
+      var bundle = new Bundle;
+
+      (function(){
+        bundle.add(file);
+      }).should.throw(/^Could not find/);
+    });
+  });
+
+
+  describe("#contents()", function(){
+    it("returns the concatenated contents of each file", function() {
+      var filenames = makeFilenames('nested/deeply/script4.js',
+                                    'nested/script3.js',
+                                    'script2.js',
+                                    'script1.js');
+
+      var contents = filenames.map(function(file) {
+        return fs.readFileSync(file, 'utf8');
+      });
+
+      var bundle = new Bundle;
+      bundle.add("test/assets/bundle/javascript/script1.js");
+      bundle.contents().should.eql(contents);
+    });
   });
 });
 
