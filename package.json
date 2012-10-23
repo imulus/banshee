@@ -1,12 +1,12 @@
 {
-  "name": "coyote",
-  "version": "2.0.0",
+  "name": "banshee",
+  "version": "0.0.1",
   "description": "A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files",
-  "homepage": "http://imulus.github.com/coyote",
-  "author": "Casey O'Hara <casey.ohara@imulus.com> (http://imulus.com)",
+  "homepage": "http://imulus.github.com/banshee",
+  "author": "Casey O'Hara <casey.ohara@imulus.om> (http://imulus.com)",
   "repository": {
     "type": "git",
-    "url": "http://github.com/imulus/coyote"
+    "url": "http://github.com/imulus/banshee"
   },
   "main": "./index",
   "dependencies": {

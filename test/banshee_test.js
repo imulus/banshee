@@ -2,10 +2,10 @@ require('should');
 var fs = require('fs'),
     coffee = require('coffee-script');
 
-var Coyote = require('../lib/coyote');
+var Banshee = require('../lib/banshee');
 
 
-describe("integrated Coyote compiler", function(){
+describe("integrated Banshee compiler", function(){
 
   describe("javascript files", function(){
     var sourceFile, requiredFile, outputFile;
@@ -22,7 +22,7 @@ describe("integrated Coyote compiler", function(){
     });
 
     it("combines multiple files", function(){
-      Coyote.run(sourceFile, outputFile);
+      Banshee.run(sourceFile, outputFile);
 
       var sourceFileContents = fs.readFileSync(sourceFile, 'utf8');
       var requiredFileContents = fs.readFileSync(requiredFile, 'utf8');
