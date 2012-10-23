@@ -26,8 +26,9 @@ describe("integrated Banshee compiler", function(){
 
       var sourceFileContents = fs.readFileSync(sourceFile, 'utf8');
       var requiredFileContents = fs.readFileSync(requiredFile, 'utf8');
+      var expectedOutput = requiredFileContents + "\n" + coffee.compile(sourceFileContents);
       var outputContents = fs.readFileSync(outputFile, 'utf8');
-      outputContents.should.equal(requiredFileContents + "\n" + sourceFileContents);
+      outputContents.should.eql(expectedOutput);
     });
 
   });

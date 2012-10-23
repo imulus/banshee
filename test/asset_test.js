@@ -1,7 +1,8 @@
 require('should');
 
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    coffee = require('coffee-script');
 
 var Asset = require('../lib/asset');
 
@@ -24,7 +25,7 @@ describe("Asset", function() {
 
 
     it("finds its dependencies", function() {
-      var filenames = makeFilenames( 'script2.js', 'nested/script3.js');
+      var filenames = makeFilenames('script2.js', 'nested/script3.js');
       var asset = new Asset(makeFilenames('script1.js')[0]);
       asset.dependencies().should.eql(filenames);
     });
@@ -37,9 +38,14 @@ describe("Asset", function() {
     });
 
     it("finds its dependencies", function() {
-      var filenames = makeFilenames( 'script2.coffee', 'nested/script3.coffee');
+      var filenames = makeFilenames('script2.coffee', 'nested/script3.coffee');
       var asset = new Asset(makeFilenames('script1.coffee')[0]);
       asset.dependencies().should.eql(filenames);
+    });
+
+    it("compiles itself", function() {
+      var asset = new Asset(makeFilenames('compile_me.coffee')[0]);
+      asset.contents().should.eql(fs.readFileSync(makeFilenames('im_compiled.js')[0], 'utf8'));
     });
   });
 });
