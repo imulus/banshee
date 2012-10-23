@@ -1,5 +1,6 @@
 require('should');
-var fs = require('fs');
+var fs = require('fs'),
+    coffee = require('coffee-script');
 
 var Coyote = require('../lib/coyote');
 
@@ -10,17 +11,15 @@ describe("integrated Coyote compiler", function(){
     var sourceFile, requiredFile, outputFile;
 
     before(function() {
-      sourceFile = "test/assets/integration/javascript/script1.js";
+      sourceFile = "test/assets/integration/javascript/script1.coffee";
       requiredFile = "test/assets/integration/javascript/script2.js";
       outputFile = "test/assets/integration/javascript/output.js";
     });
-
 
     beforeEach(function() {
       if (fs.existsSync(outputFile))
         fs.unlinkSync(outputFile);
     });
-
 
     it("combines multiple files", function(){
       Coyote.run(sourceFile, outputFile);
@@ -28,12 +27,10 @@ describe("integrated Coyote compiler", function(){
       var sourceFileContents = fs.readFileSync(sourceFile, 'utf8');
       var requiredFileContents = fs.readFileSync(requiredFile, 'utf8');
       var outputContents = fs.readFileSync(outputFile, 'utf8');
-
-      outputContents.should.equal(requiredFileContents + sourceFileContents);
+      outputContents.should.equal(requiredFileContents + "\n" + sourceFileContents);
     });
 
   });
 
 });
-
 

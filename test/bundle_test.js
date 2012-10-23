@@ -86,7 +86,7 @@ describe("Bundle", function() {
 
       var contents = filenames.map(function(file) {
         return fs.readFileSync(file, 'utf8');
-      });
+      }).join("\n");
 
       var bundle = new Bundle;
       bundle.add("test/assets/bundle/javascript/script1.js");
