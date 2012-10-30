@@ -22,7 +22,6 @@ describe("Asset", function() {
       asset.type.should.eql("js");
     });
 
-
     it("finds its dependencies", function() {
       var filenames = makeFilenames('script2.js', 'nested/script3.js');
       var asset = new Asset(makeFilenames('script1.js')[0]);
