@@ -78,19 +78,45 @@ describe("Bundle", function() {
 
 
     describe("#contents()", function(){
-      it("returns the concatenated contents of each file", function() {
+      it("returns the concatenated contents of each file", function(done) {
         var filenames = makeFilenames('nested/deeply/script4.js',
                                       'nested/script3.js',
                                       'script2.js',
                                       'script1.js');
 
-        var contents = filenames.map(function(file) {
+        var expectedContents = filenames.map(function(file) {
           return fs.readFileSync(file, 'utf8');
         }).join("\n");
 
         var bundle = new Bundle;
         bundle.add("test/assets/bundle/script1.js");
-        bundle.contents().should.eql(contents);
+        bundle.contents(function(actualContents) {
+          actualContents.should.eql(expectedContents);
+          done();
+        });
+      });
+    });
+  });
+
+
+  describe("Less", function() {
+    it("finds file dependencies", function() {
+      var filenames = makeFilenames('nested/deeply/stylesheet4.less',
+                                    'nested/stylesheet3.less',
+                                    'stylesheet2.less',
+                                    'stylesheet1.less');
+      var bundle = new Bundle;
+      bundle.add("test/assets/bundle/stylesheet1.less");
+      bundle.filenames().should.eql(filenames);
+    });
+
+    it("compiles itself", function(done) {
+      var expectedContents = fs.readFileSync(makeFilenames('im_compiled.css')[0], 'utf8');
+      var bundle = new Bundle;
+      bundle.add(makeFilenames('stylesheet1.less')[0]);
+      bundle.contents(function(actualContents) {
+        actualContents.should.eql(expectedContents);
+        done();
       });
     });
   });
