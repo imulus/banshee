@@ -1,0 +1,6 @@
+/*= require nested/stylesheet3.css */
+/*= require stylesheet2.css */
+
+body {
+  background: red;
+}

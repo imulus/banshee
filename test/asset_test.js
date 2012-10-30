@@ -6,11 +6,10 @@ var fs = require('fs'),
 
 var Asset = require('../lib/asset');
 
-var testAssetsDir = 'test/assets/asset/javascript';
+var testAssetsDir = 'test/assets/asset';
 
 function makeFilenames(/* name1,name2,.. */) {
-  var names = Array.prototype.slice.call(arguments);
-  return names.map(function(name) {
+  return Array.prototype.slice.call(arguments).map(function(name) {
     return process.cwd() + '/' + testAssetsDir + '/' + name;
   });
 }
@@ -46,6 +45,32 @@ describe("Asset", function() {
     it("compiles itself", function() {
       var asset = new Asset(makeFilenames('compile_me.coffee')[0]);
       asset.contents().should.eql(fs.readFileSync(makeFilenames('im_compiled.js')[0], 'utf8'));
+    });
+  });
+
+  describe("css", function() {
+    it("knows its type", function() {
+      var asset = new Asset(makeFilenames('stylesheet1.css')[0]);
+      asset.type.should.eql("css");
+    });
+
+    it("finds its dependencies", function() {
+      var filenames = makeFilenames('stylesheet2.css', 'nested/stylesheet3.css');
+      var asset = new Asset(makeFilenames('stylesheet1.css')[0]);
+      asset.dependencies().should.eql(filenames);
+    });
+  });
+
+  describe("less", function() {
+    it("knows its type", function() {
+      var asset = new Asset(makeFilenames('stylesheet1.less')[0]);
+      asset.type.should.eql("less");
+    });
+
+    it("finds its dependencies", function() {
+      var filenames = makeFilenames('stylesheet2.less', 'nested/stylesheet3.less');
+      var asset = new Asset(makeFilenames('stylesheet1.less')[0]);
+      asset.dependencies().should.eql(filenames);
     });
   });
 });
