@@ -6,12 +6,12 @@ var Banshee = require('../');
 program
   .version('0.0.0')
   .usage('<input file>:<output file> [options]')
-  .option('-w, --watch',    "Watch for file changes")
-  .option('-c, --compress', "Compress output")
-  .option('-q, --quiet',    "Quiet output, doesn't output manifest")
-  .option('--no-color',     "Disable color in the output")
-  .option('--full-paths',   "Use full filepaths in the output")
-  .option('--clear',        "Clear the terminal window. On by default with --watch.")
+  .option('-w, --watch',    "watch for file changes")
+  .option('-c, --compress', "compress output")
+  .option('-q, --quiet',    "quiet output, doesn't output manifest")
+  .option('--no-color',     "disable color in the output")
+  .option('--full-paths',   "use full filepaths in the output")
+  .option('--clear',        "clear the terminal window. on by default with --watch.")
   .parse(process.argv);
 
 if(!program.args[0])
