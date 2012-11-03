@@ -9,6 +9,7 @@
     "url": "http://github.com/imulus/banshee"
   },
   "main": "./index",
+  "bin": "./bin/banshee", 
   "dependencies": {
     "commander" : "1.0.5",
     "coffee-script" : "1.3.3",

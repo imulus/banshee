@@ -5,7 +5,7 @@ var Banshee = require('../');
 
 program
   .version('0.0.0')
-  .option('-w, --watch',    "Watch for filechanges")
+  .option('-w, --watch',    "Watch for file changes")
   .option('-c, --compress', "Compress output")
   .option('-q, --quiet',    "Quiet output, doesn't output manifest")
   .option('--no-color',     "Disable color in the output")
