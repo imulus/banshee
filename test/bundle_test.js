@@ -1,4 +1,4 @@
-require('should');
+require('./test_helper');
 
 var fs = require('fs'),
     path = require('path');

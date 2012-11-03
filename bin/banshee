@@ -1,2 +1,19 @@
 #!/usr/bin/env node
 
+var program = require('commander');
+var Banshee = require('../');
+
+program
+  .version('0.0.0')
+  .option('-w, --watch', "Watch for filechanges")
+  .option('-c, --compress', "Compress output")
+  .option('-q, --quiet', "Quiet output, doesn't output manifest")
+  .parse(process.argv);
+
+try {
+  Banshee.run(program);
+}
+catch (err) {
+  Banshee.error(err);
+}
+
