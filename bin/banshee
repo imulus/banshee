@@ -10,6 +10,7 @@ program
   .option('-q, --quiet',    "Quiet output, doesn't output manifest")
   .option('--no-color',     "Disable color in the output")
   .option('--full-paths',   "Use full filepaths in the output")
+  .option('--clear',        "Clear the terminal window. On by default with --watch.")
   .parse(process.argv);
 
 if(!program.args[0])
