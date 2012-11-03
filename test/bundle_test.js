@@ -15,6 +15,21 @@ function makeFilenames(/* name1,name2,.. */) {
 
 describe("Bundle", function() {
   describe("JavaScript", function() {
+
+    describe("#type()", function() {
+      it("knows its type", function() {
+        (new Bundle).add("test/assets/bundle/script1.js").type().should.eql("js");
+        (new Bundle).add("test/assets/bundle/script1.coffee").type().should.eql("coffee");
+      });
+    });
+
+    describe("#target()", function() {
+      it("knows its target", function() {
+        (new Bundle).add("test/assets/bundle/script1.js").target().should.eql("js");
+        (new Bundle).add("test/assets/bundle/script1.coffee").target().should.eql("js");
+      });
+    });
+
     describe("#add()", function() {
       it("finds file dependencies", function() {
         var filenames = makeFilenames('nested/deeply/script4.js',
@@ -99,7 +114,21 @@ describe("Bundle", function() {
   });
 
 
-  describe("Less", function() {
+  describe("CSS", function() {
+    describe("#type()", function() {
+      it("knows its type", function() {
+        (new Bundle).add("test/assets/bundle/stylesheet1.css").type().should.eql("css");
+        (new Bundle).add("test/assets/bundle/stylesheet1.less").type().should.eql("less");
+      });
+    });
+
+    describe("#target()", function() {
+      it("knows its target", function() {
+        (new Bundle).add("test/assets/bundle/stylesheet1.css").target().should.eql("css");
+        (new Bundle).add("test/assets/bundle/stylesheet1.less").target().should.eql("css");
+      });
+    });
+    
     it("finds file dependencies", function() {
       var filenames = makeFilenames('nested/deeply/stylesheet4.less',
                                     'nested/stylesheet3.less',
@@ -121,7 +150,5 @@ describe("Bundle", function() {
     });
   });
 });
-
-
 
 

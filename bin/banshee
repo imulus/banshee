@@ -5,13 +5,25 @@ var Banshee = require('../');
 
 program
   .version('0.0.0')
-  .option('-w, --watch', "Watch for filechanges")
+  .option('-w, --watch',    "Watch for filechanges")
   .option('-c, --compress', "Compress output")
-  .option('-q, --quiet', "Quiet output, doesn't output manifest")
+  .option('-q, --quiet',    "Quiet output, doesn't output manifest")
+  .option('--no-color',     "Disable color in the output")
+  .option('--full-paths',   "Use full filepaths in the output")
   .parse(process.argv);
 
+if(!program.args[0])
+  program.help();
+
+var input_output = program.args[0].split(":");
+var config = {
+  input: input_output[0],
+  output: input_output[1],
+  options: program
+};
+
 try {
-  Banshee.run(program);
+  Banshee.run(config);
 }
 catch (err) {
   Banshee.error(err);

@@ -7,17 +7,27 @@ var Banshee = require('../lib/banshee');
 
 
 describe("Banshee", function(){
-  it("throws when no input file is provided", function() {
-    var program = { args: [] };
+  it("throws when the input is missing", function() {
+    var config = {
+      input: undefined,
+      output: "defined",
+      options: {}
+    };
+
     (function() {
-      Banshee.run(program);
+      Banshee.run(config);
     }).should.throw(/No input file specified/);
   });
 
-  it("throws when no output file is provided", function() {
-    var program = { args: ["input"] };
+  it("throws when the output is missing", function() {
+    var config = {
+      input: "defined",
+      output: undefined,
+      options: {}
+    };
+
     (function() {
-      Banshee.run(program);
+      Banshee.run(config);
     }).should.throw(/No output file specified/);
   });
 });
