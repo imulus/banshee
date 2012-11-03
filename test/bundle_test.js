@@ -47,10 +47,12 @@ describe("Bundle", function() {
                                       'lib/stuff/script2.js',
                                       'lib/stuff/nested/script3.js',
                                       'lib/script1.js');
-
         var bundle = new Bundle;
         bundle.add('test/assets/bundle/lib');
-        bundle.filenames().should.eql(filenames);
+
+        filenames.forEach(function(filename) {
+          bundle.contains(filename).should.eql(true);
+        });
       });
 
 
