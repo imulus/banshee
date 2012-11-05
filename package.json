@@ -1,6 +1,6 @@
 {
   "name": "banshee",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files",
   "homepage": "http://imulus.github.com/banshee",
   "author": "Casey O'Hara <casey.ohara@imulus.om> (http://imulus.com)",
@@ -9,7 +9,7 @@
     "url": "http://github.com/imulus/banshee"
   },
   "main": "./index",
-  "bin": "./bin/banshee", 
+  "bin": "./bin/banshee",
   "dependencies": {
     "commander" : "1.0.5",
     "coffee-script" : "1.3.3",
