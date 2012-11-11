@@ -6,6 +6,8 @@ Banshee
 
 Banshee combines your source files into a single script or stylesheet to reduce HTTP overhead and make development easier. It has built-in support for <a href="https://github.com/sstephenson/sprockets">Sprockets-style</a> dependency syntax (`#= require x`) and a lightning-fast, built-in watch mechanism to detect changes to your source files and recompile on the fly.
 
+Requires node v0.8+
+
 [![Build Status](https://secure.travis-ci.org/imulus/banshee.png)](http://travis-ci.org/imulus/banshee)
 
 
