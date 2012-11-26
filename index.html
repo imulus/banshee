@@ -1,116 +1,176 @@
-<h1><a name="banshee" class="anchor" href="#banshee"><span class="mini-icon mini-icon-link"></span></a>Banshee</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Banshee | A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files.</title>
+  <meta name="description" content="An intelligent command-line tool for combining and compressing your JavaScript files" />
+  <meta name="keywords" content="Coyote, JavaScript, compressor, Imulus" />
 
-<h2>
-<a name="a-speedy-tool-for-combining-and-compressing-your-javascript-coffeescript-css-and-less-source-files" class="anchor" href="#a-speedy-tool-for-combining-and-compressing-your-javascript-coffeescript-css-and-less-source-files"><span class="mini-icon mini-icon-link"></span></a>A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files.</h2>
+  <link rel="stylesheet" href="./css/reset.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./css/screen.css" type="text/css" media="screen" />
+  <link href='http://fonts.googleapis.com/css?family=Arvo:700italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+</head>
 
-<p>Banshee combines your source files into a single script or stylesheet to reduce HTTP overhead and make development easier. It has built-in support for <a href="https://github.com/sstephenson/sprockets">Sprockets-style</a> dependency syntax (<code>#= require x</code>) and a lightning-fast, built-in watch mechanism to detect changes to your source files and recompile on the fly.</p>
+<body>
 
-<p><a href="http://travis-ci.org/imulus/banshee"><img src="https://secure.travis-ci.org/imulus/banshee.png" alt="Build Status" style="max-width:100%;"></a></p>
+<div id="header">
+  <div class="inner autoclear">
+      <img class="logo" src="./images/logo.png" />
+      <h1>Banshee</h1>
+      <p>A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files.</p>
+  </div>
+</div>
 
-<h3>
-<a name="installation" class="anchor" href="#installation"><span class="mini-icon mini-icon-link"></span></a>Installation</h3>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install -g banshee
-</pre></div>
 
-<h3>
-<a name="command-line-interface" class="anchor" href="#command-line-interface"><span class="mini-icon mini-icon-link"></span></a>Command Line Interface</h3>
+<div id="container">
 
-<p><strong>Syntax:</strong></p>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>About</h3>
+    </div>
+    <div class="right">
+      <p>Banshee combines your source files into a single script or stylesheet to reduce HTTP overhead and make development easier. It has built-in support for <a href="https://github.com/sstephenson/sprockets">Sprockets-style</a> dependency syntax (#= require x) and a lightning-fast, built-in watch mechanism to detect changes to your source files and recompile on the fly.</p>
+    </div>
+  </div>
 
-<div class="highlight"><pre><span class="nv">$ </span>banshee &lt;input file&gt;:&lt;output file&gt; <span class="o">[</span>options<span class="o">]</span>
-</pre></div>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Installation</h3>
+    </div>
+    <div class="right">
+      <code><b>$</b> npm install -g banshee</code>
+    </div>
+  </div>
 
-<p><strong>Example</strong></p>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Command Line Interface</h3>
+    </div>
+    <div class="right">
+      <p><strong>Syntax:</strong></p>
+      <code><b>$</b> banshee [input_filepath]:[output_filepath]</code>
+      <br />
+      <p><strong>Example:</strong></p>
+      <code><b>$</b> banshee src/application.coffee:build/application.min.js</code>
+    </div>
+  </div>
 
-<div class="highlight"><pre><span class="nv">$ </span>banshee src/application.coffee:build/application.min.js
-</pre></div>
-
-<h3>
-<a name="options" class="anchor" href="#options"><span class="mini-icon mini-icon-link"></span></a>Options</h3>
-
-<table>
-<tbody><tr><th>Option</th>
-        <th>Description</th>
-    </tr><tr>
-<th>-c, --compress</th>
-            <td>Compress the final output</td>
-        </tr>
-<tr>
-<th>-w, --watch</th>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Options</h3>
+    </div>
+    <div class="right">
+      <table>
+        <thead>
+          <th>Option</th>
+          <th>Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th>-c, --compress</th>
+            <td>Compress the final compilation with the Google Closure Compiler</td>
+          </tr>
+          <tr>
+            <th>-w, --watch</th>
             <td>Use the built-in watch mechanism to observe your source files and re-compile when something changes</td>
-        </tr>
-<tr>
-<th>-q, --quiet</th>
+          </tr>
+          <tr>
+            <th>-q, --quiet</th>
             <td>Quiet the command-line output</td>
-        </tr>
-<tr>
-<th>--no-color</th>
+          </tr>
+          <tr>
+            <th>--no-color</th>
             <td>Disable color in the output</td>
-        </tr>
-<tr>
-<th>--full-paths</th>
+          </tr>
+          <tr>
+            <th>--full-paths</th>
             <td>Use full filepaths in the manifest output</td>
-        </tr>
-<tr>
-<th>--clear</th>
-            <td>Clear the terminal window, on by default with --watch</td>
-        </tr>
-<tr>
-<th>-h, --help</th>
+          </tr>
+          <tr>
+            <th>--clear</th>
+            <td>  Clear the terminal window, on by default with --watch</td>
+          </tr>
+          <tr>
+            <th>-h, --help</th>
             <td>Output usage information</td>
-        </tr>
-<tr>
-<th>-v, --version</th>
+          </tr>
+          <tr>
+            <th>-v, --version</th>
             <td>Output the version number</td>
-        </tr>
-</tbody></table><h3>
-<a name="requiring-source-files" class="anchor" href="#requiring-source-files"><span class="mini-icon mini-icon-link"></span></a>Requiring Source Files</h3>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<p>Banshee supports <a href="https://github.com/sstephenson/sprockets">Sprockets-style</a> requires, with one exception. Instead of using <code>require_tree</code>, you can simply use <code>require</code> and Banshee will automatically detect if the path is a source file or a directory.</p>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Requiring Source Files</h3>
+    </div>
+    <div class="right">
+      <p class="description">Banshee supports <a href="https://github.com/sstephenson/sprockets">Sprockets-style</a> requires, with one exception. Instead of using `require_tree`, you can simply use `require` and Banshee will automatically detect if the path is a source file or a directory.</p>
+      <br />
+      <p><strong>Syntax:</strong> (JavaScript)</p>
+      <code><i>//= require lib/some_directory</i><br /></code>
+      <br />
+      <code><i>//= require other_file.js</i><br /></code>
+      <br />
+      <p><strong>Syntax:</strong> (CoffeeScript)</p>
+      <code><i>#= require lib/some_directory</i><br /></code>
+      <br />
+      <code><i>#= require other_file.coffee</i><br /></code>
+      <br />
+      <p><strong>Syntax:</strong> (CSS)</p>
+      <code><i>/*= require lib/some_directory */</i><br /></code>
+      <br />
+      <code><i>/*= require other_file.css */</i><br /></code>
+      <br />
+      <p><strong>Syntax:</strong> (LESS) Uses normal LESS import statements.</p>
+      <code>@import 'lib/dependency1';<br /></code>
+      <br />
+      <code>@import 'dependency2';<br /></code>
 
-<p><strong>Syntax:</strong> (JavaScript)</p>
+      <p class="description">Paths used in `require` statements are evaluated relative to the file which contains them.</p>
+    </div>
+  </div>
 
-<div class="highlight"><pre><span class="c1">//= require lib/some_directory</span>
-<span class="c1">//= require other_file.js</span>
-</pre></div>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Contribute</h3>
+    </div>
+    <div class="right">
+      <p><strong>We'd love your help. Fork us so we can make Banshee better.</strong></p>
+      <code><b>$</b> git clone git://github.com/imulus/banshee</code>
+    </div>
+  </div>
 
-<p><strong>Syntax:</strong> (CoffeeScript)</p>
+  <div class="section autoclear">
+    <div class="left">
+      <h3>Download</h3>
+    </div>
+    <div class="right">
+      <p>
+        You can download this project in either
+        <a href="http://github.com/imulus/banshee/zipball/master">zip</a> or
+        <a href="http://github.com/imulus/banshee/tarball/master">tar</a> formats.
+      </p>
+      <p class="description">or get the source code on GitHub : <a href="http://github.com/imulus/banshee">imulus/banshee</a></p>
+    </div>
+  </div>
 
-<div class="highlight"><pre><span class="c1">#= require lib/some_directory</span>
-<span class="c1">#= require other_file.coffee</span>
-</pre></div>
+</div> <!-- end: #container -->
 
-<p><strong>Syntax:</strong> (CSS)</p>
 
-<div class="highlight"><pre><span class="c">/*= require lib/some_directory */</span>
-<span class="c">/*= require other_file.css */</span>
-</pre></div>
-
-<p><strong>Syntax:</strong> (LESS) Uses normal LESS import statements.</p>
-
-<div class="highlight"><pre><span class="k">@import</span> <span class="s1">'lib/dependency1'</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s1">'dependency2'</span><span class="p">;</span>
-</pre></div>
-
-<p>Paths used in <code>require</code> statements are evaluated relative to the file which contains them.</p>
-
-<h3>
-<a name="contribute" class="anchor" href="#contribute"><span class="mini-icon mini-icon-link"></span></a>Contribute</h3>
-
-<p><strong>We'd love your help. Fork us so we can make Banshee better.</strong></p>
-
-<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/imulus/banshee
-</pre></div>
-
-<h3>
-<a name="download" class="anchor" href="#download"><span class="mini-icon mini-icon-link"></span></a>Download</h3>
-
-<p>You can download this project in either
-<a href="http://github.com/imulus/banshee/zipball/master">zip</a> or <a href="http://github.com/imulus/banshee/tarball/master">tar</a> formats.</p>
-
-<p>or get the source code on GitHub : <a href="http://github.com/imulus/banshee">imulus/banshee</a></p>
-
-<a style="background-color:#000" href="http://www.imulus.com">
-    <img src="http://imulus.github.com/coyote/images/imulus.png">
+<div id="footer">
+  <a href="http://www.imulus.com">
+    <img src="./images/imulus.png" />
   </a>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="./scripts/retina.js"></script>
+
+<a href="http://github.com/imulus/coyote"><img style="position: fixed; top: 0; right: 0; border: 0;" src="./images/github-banner.png" alt="Fork me on GitHub" /></a>
+</body>
+</html>

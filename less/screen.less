@@ -1,0 +1,212 @@
+@base   : #10202D;
+@dark   : #0a1721;
+@light   : #5D7D93;
+@accent : #DFFF9F;
+@text   : #969696;
+
+
+body {
+  font: 12px/18px Helvetica, Arial, sans-serif;
+  color: #FFF;
+  text-shadow: 0px -1px 0px #000;
+  position: relative;
+  background: @base;
+}
+
+h1 {
+  font-family: 'SteelfishBold';
+  font-size: 90px;
+  text-transform: uppercase;
+  position: relative;
+  top: 30px;
+  color : @accent;
+  @shadow : @accent * 0.4;
+  text-shadow: 1px 1px 0px @shadow, 2px 2px 0px @shadow, 3px 3px 0px @shadow;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 23px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  color: @light;
+  @shadow : @light * 0.4;
+  text-shadow: 1px 1px 0px @shadow, 2px 2px 0px @shadow, 3px 3px 0px @shadow;
+}
+
+p {
+  color: @text;
+  margin-bottom: 12px;
+}
+
+p strong {
+  color: #FFF;
+}
+
+a {
+  color: @accent;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+strong { font-weight: bold; }
+
+
+/* Utilities */
+.autoclear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.autoclear     { display: inline-block; }
+.autoclear     { display: block; }
+
+.inner { width: 768px; margin: auto; }
+.left { width: 174px; padding-right: 18px; float: left; }
+.right { width : 558px; padding-left: 18px; float: right; }
+
+
+#header {
+  padding: 52px 18px 36px;
+  margin: 0 0 36px;
+  background: @dark;
+  box-shadow:inset 0 -5px 36px rgba(0,0,0,0.3);
+  -moz-box-shadow:inset 0 -5px 36px rgba(0,0,0,0.3);
+  -webkit-box-shadow:inset 0 -5px 36px rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  .right {
+    > p {
+      margin-right: 85px;
+      a {
+        color: #ccc;
+      }
+    }  
+  }
+}
+
+#header .inner { padding: 0 18px; }
+
+#container {
+  width: 804px;
+  margin: 0 auto 36px;
+  border-top: 1px solid @dark;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.section {
+  padding: 36px 18px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid @dark;
+}
+
+code {
+  display: block;
+  padding: 18px 36px;
+  background: @dark;
+  font-family: 'monaco', monospace;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);
+  -webkit-box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);
+  box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);  
+  border: 1px solid rgba(0,0,0,0.5);
+  i { color: #666; font-style: italic; line-height: inherit; }
+  b { 
+    @base: @text;
+    @teal: #2ea8bb;
+    @fuschia: #b47ec6;
+    @orange: #db964c;
+    @blue: #8ac6d5;
+    @green: #87a485;
+    @salmon: #e27d7c;
+    @mocha: #caac8d;
+
+    color: @base; 
+    &.keyword   { color: @teal; }
+    &.string    { color: @accent; }    
+    &.variable  { color: @fuschia; }
+    &.method    { color: @teal; }
+    &.boolean   { color: @blue; }
+    &.constant,
+    &.hash,
+    &.array     { color: @base; }
+    &.symbol    { color: @mocha; }
+    &.number    { color: @green; }
+    &.yield     { color: @base; }
+  }
+}
+
+
+
+
+table {
+  display: block;
+  padding: 8px 20px;      
+  background: @dark;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);
+  -webkit-box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);
+  box-shadow:inset 0 5px 10px rgba(0,0,0,0.3);  
+  border: 1px solid rgba(0,0,0,0.5);
+
+  th, td {
+    padding: 8px 16px;    
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  thead {
+    th, td {
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    th, td {
+      font-family: 'monaco', monospace;      
+      text-align: left;      
+    }
+
+    th {
+      width: 100px;
+    }
+    
+    tr:last-child {
+      td, th {
+        border-bottom: none;
+      }
+    }
+  }
+
+  b { color: @accent; }
+  i { color: #666; font-style: italic; line-height: inherit; }
+}
+
+
+
+
+.description {
+  margin: 12px 0 0;
+}
+
+#footer {
+  margin: 36px;
+}
+
+#footer a {
+  display: block;
+  margin: auto;
+  img {
+    display: block;
+    margin: auto;
+  }
+}
+
