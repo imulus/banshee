@@ -1,4 +1,4 @@
-![Banshee](https://imulus.github.com/banshee/images/banshee-horizontal-lockup.png)
+![Banshee](https://raw.github.com/imulus/banshee/gh-pages/images/banshee-horizontal-lockup.png)
 
 ##A speedy tool for combining and compressing your JavaScript, CoffeeScript, CSS and LESS source files.
 
