@@ -76,7 +76,7 @@ $ banshee src/application.coffee:build/application.min.js
 
 ###Requiring Source Files
 
-Banshee supports [Sprockets-style](https://github.com/sstephenson/sprockets) requires, with one exception. Instead of using `require_tree`, you can simply use `require` and Banshee will automatically detect if the path is a source file or a directory.
+Banshee supports [Sprockets-style](https://github.com/sstephenson/sprockets) requires, with one exception. Instead of using `require_tree`, you can simply use `require` and Banshee will automatically detect if the path is a source file or a directory. Please note, doing require on a top level directory will be recursive through its sub-directories.
 
 
 **Syntax:** (JavaScript)
