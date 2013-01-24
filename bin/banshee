@@ -4,7 +4,7 @@ var program = require('commander');
 var Banshee = require('../');
 
 program
-  .version('0.0.4')
+  .version('0.0.5')
   .usage('<input file>:<output file> [options]')
   .option('-w, --watch',    "watch for file changes")
   .option('-c, --compress', "compress output")
