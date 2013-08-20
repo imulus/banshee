@@ -1,4 +1,5 @@
 require('./test_helper');
+var process = require('child_process');
 
 var fs = require('fs'),
     coffee = require('coffee-script');
@@ -29,5 +30,15 @@ describe("Banshee", function(){
     (function() {
       Banshee.run(config);
     }).should.throw(/No output file specified/);
+  });
+
+  it("has consistent version numbers", function(done) {
+    var package_version = JSON.parse(fs.readFileSync('./package.json','utf8')).version;
+
+    process.exec('./bin/banshee --version', function (error, stdout, stderr) {
+      var executable_version = stdout.replace("\n", "");
+      package_version.should.eql(executable_version);
+      done();
+    });
   });
 });
